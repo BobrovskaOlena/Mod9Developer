@@ -4,6 +4,7 @@ import org.thymeleaf.templateresolver.FileTemplateResolver;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,7 +27,7 @@ public class TimeServlet extends HttpServlet {
         templateEngine = new TemplateEngine();
 
         FileTemplateResolver templateResolver = new FileTemplateResolver();
-        templateResolver.setPrefix("src/main/webapp/WEB-INF/templates/");
+        templateResolver.setPrefix("https://github.com/BobrovskaOlena/Mod9Developer/tree/master/src/main/webapp/WEB-INF/templates");
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode("HTML5");
         templateResolver.setOrder(templateEngine.getTemplateResolvers().size());
@@ -43,6 +44,10 @@ public class TimeServlet extends HttpServlet {
 
         String timeZoneParam = request.getParameter("timezone");
         ZoneId zoneId = parseTimeZone(timeZoneParam).orElse(ZoneId.of("UTC"));
+
+        Cookie cookie = new Cookie("lastTimezone", zoneId.toString());
+        cookie.setMaxAge(60 * 60 * 24 * 365);
+        response.addCookie(cookie);
 
         ZonedDateTime currentTime = ZonedDateTime.now(zoneId);
         ZoneOffset currentOffset = currentTime.getOffset();
