@@ -34,7 +34,7 @@ public class TimeServlet extends HttpServlet {
         templateEngine.addTemplateResolver(templateResolver);
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws  IOException, ServletException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws  IOException {
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();

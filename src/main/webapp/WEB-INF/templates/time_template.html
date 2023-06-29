@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Time Servlet</title>
+</head>
+<body>
+<h3>Hello! This is Time Servlet!</h3>
+<p th:text="${formattedTime}"></p>
+<h4>Current Timezone: <span th:text="${zoneId}"></span></h4>
+<p th:text="${offset}"></p>
+</body>
+</html>
+
