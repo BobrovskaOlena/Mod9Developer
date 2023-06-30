@@ -35,15 +35,20 @@ public class TimeServlet extends HttpServlet {
         templateEngine.addTemplateResolver(templateResolver);
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws  IOException {
-
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         Context context = new Context();
         response.setHeader("Refresh", "1");
 
         String timeZoneParam = request.getParameter("timezone");
-        ZoneId zoneId = parseTimeZone(timeZoneParam).orElse(ZoneId.of("UTC"));
+        ZoneId zoneId;
+
+        if (timeZoneParam == null || timeZoneParam.isEmpty()) {
+            zoneId = parseTimeZone(getLastTimezoneFromCookie(request)).orElse(ZoneId.systemDefault());
+        } else {
+            zoneId = parseTimeZone(timeZoneParam).orElse(ZoneId.of("UTC"));
+        }
 
         Cookie cookie = new Cookie("lastTimezone", zoneId.toString());
         cookie.setMaxAge(60 * 60 * 24 * 365);
@@ -60,6 +65,18 @@ public class TimeServlet extends HttpServlet {
         String output = templateEngine.process("time_template", context);
         out.write(output);
         out.close();
+    }
+
+    private String getLastTimezoneFromCookie(HttpServletRequest request) {
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("lastTimezone")) {
+                    return cookie.getValue();
+                }
+            }
+        }
+        return null;
     }
 
     private Optional<ZoneId> parseTimeZone(String timeZoneParam) {
@@ -87,4 +104,3 @@ public class TimeServlet extends HttpServlet {
         return String.format("%+03d:%02d", hours, minutes);
     }
 }
-
