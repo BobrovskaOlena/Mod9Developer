@@ -1,7 +1,5 @@
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
+import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,15 +12,7 @@ public class TimeZoneValidateFilter extends HttpFilter {
     protected void doFilter(HttpServletRequest req, HttpServletResponse resp, FilterChain chain)
             throws IOException, ServletException {
         String timeZoneParam = req.getParameter("timezone");
-        Cookie[] cookies = req.getCookies();
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("lastTimezone")) {
-                    timeZoneParam = cookie.getValue();
-                    break;
-                }
-            }
-        }
+
         if (timeZoneParam == null || timeZoneParam.isEmpty()) {
             timeZoneParam = TimeZone.getDefault().getID();
         } else if (timeZoneParam.equals("UTC")) {
@@ -57,10 +47,3 @@ public class TimeZoneValidateFilter extends HttpFilter {
         return true;
     }
 }
-
-
-
-
-
-
-

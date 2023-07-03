@@ -1,6 +1,6 @@
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
-import org.thymeleaf.templateresolver.FileTemplateResolver;
+import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,8 +26,8 @@ public class TimeServlet extends HttpServlet {
         super.init();
         templateEngine = new TemplateEngine();
 
-        FileTemplateResolver templateResolver = new FileTemplateResolver();
-        templateResolver.setPrefix("C:/Users/HP/Documents/GitHub/Mod9Developer/templates");
+        ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
+        templateResolver.setPrefix("/WEB-INF/templates/");
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode("HTML5");
         templateResolver.setOrder(templateEngine.getTemplateResolvers().size());
@@ -43,6 +43,7 @@ public class TimeServlet extends HttpServlet {
 
         String timeZoneParam = request.getParameter("timezone");
         ZoneId zoneId;
+
 
         if (timeZoneParam == null || timeZoneParam.isEmpty()) {
             zoneId = parseTimeZone(getLastTimezoneFromCookie(request)).orElse(ZoneId.systemDefault());
