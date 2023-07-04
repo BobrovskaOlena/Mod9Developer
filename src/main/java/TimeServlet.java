@@ -27,7 +27,7 @@ public class TimeServlet extends HttpServlet {
         templateEngine = new TemplateEngine();
 
         ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
-        templateResolver.setPrefix("/WEB-INF/templates/");
+        templateResolver.setPrefix("src/main/webapp/WEB-INF/templates/");
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode("HTML5");
         templateResolver.setOrder(templateEngine.getTemplateResolvers().size());
@@ -39,7 +39,7 @@ public class TimeServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         Context context = new Context();
-        response.setHeader("Refresh", "1");
+        //response.setHeader("Refresh", "1");
 
         String timeZoneParam = request.getParameter("timezone");
         ZoneId zoneId;
