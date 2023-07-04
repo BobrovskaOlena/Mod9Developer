@@ -1,6 +1,6 @@
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
-import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
+import org.thymeleaf.templateresolver.FileTemplateResolver;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,19 +26,20 @@ public class TimeServlet extends HttpServlet {
         super.init();
         templateEngine = new TemplateEngine();
 
-        ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
-        templateResolver.setPrefix("src/main/webapp/WEB-INF/templates/");
-        templateResolver.setSuffix(".html");
-        templateResolver.setTemplateMode("HTML5");
-        templateResolver.setOrder(templateEngine.getTemplateResolvers().size());
-        templateResolver.setCacheable(false);
-        templateEngine.addTemplateResolver(templateResolver);
+        FileTemplateResolver resolver = new FileTemplateResolver();
+        resolver.setPrefix("C:\\Users\\HP\\Documents\\GitHub\\Mod9Developer\\templates\\");
+        resolver.setSuffix(".html");
+        resolver.setTemplateMode("HTML5");
+        resolver.setOrder(templateEngine.getTemplateResolvers().size());
+        resolver.setCacheable(false);
+        templateEngine.addTemplateResolver(resolver);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         Context context = new Context();
+        request.getLocale();
         //response.setHeader("Refresh", "1");
 
         String timeZoneParam = request.getParameter("timezone");
