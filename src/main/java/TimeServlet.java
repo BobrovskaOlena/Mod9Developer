@@ -27,7 +27,7 @@ public class TimeServlet extends HttpServlet {
         templateEngine = new TemplateEngine();
 
         FileTemplateResolver resolver = new FileTemplateResolver();
-        resolver.setPrefix("C:\\Users\\HP\\Documents\\GitHub\\Mod9Developer\\templates\\");
+        resolver.setPrefix("C:/Users/HP/Documents/GitHub/Mod9Developer/templates/");
         resolver.setSuffix(".html");
         resolver.setTemplateMode("HTML5");
         resolver.setOrder(templateEngine.getTemplateResolvers().size());
