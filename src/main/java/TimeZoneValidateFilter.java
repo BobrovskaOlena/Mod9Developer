@@ -11,7 +11,7 @@ import java.util.TimeZone;
 @WebFilter("/time")
 public class TimeZoneValidateFilter extends HttpFilter {
     @Override
-    protected void doFilter(HttpServletRequest req, HttpServletResponse resp, FilterChain chain)
+    public void doFilter(HttpServletRequest req, HttpServletResponse resp, FilterChain chain)
             throws IOException, ServletException {
         String timeZoneParam = req.getParameter("timezone");
 
@@ -29,7 +29,7 @@ public class TimeZoneValidateFilter extends HttpFilter {
         chain.doFilter(req, resp);
     }
 
-    private boolean isValidTimeZone(String timeZoneParam) {
+    public boolean isValidTimeZone(String timeZoneParam) {
         if (timeZoneParam.length() < 4 || !timeZoneParam.startsWith("UTC")) {
             return false;
         }
