@@ -1,13 +1,13 @@
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.templateresolver.FileTemplateResolver;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.ZoneId;
@@ -15,7 +15,6 @@ import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
-
 
 @WebServlet(value = "/time")
 public class TimeServlet extends HttpServlet {
@@ -27,24 +26,22 @@ public class TimeServlet extends HttpServlet {
         templateEngine = new TemplateEngine();
 
         FileTemplateResolver resolver = new FileTemplateResolver();
-        resolver.setPrefix("C:/Users/HP/Documents/GitHub/Mod9Developer/templates/");
+        resolver.setPrefix("C:/Users/HP/Documents/GitHub/Mod9Developer/src/main/webapp/WEB-INF/templates/");
         resolver.setSuffix(".html");
         resolver.setTemplateMode("HTML5");
-        resolver.setOrder(templateEngine.getTemplateResolvers().size());
+        resolver.setCharacterEncoding("UTF-8");
         resolver.setCacheable(false);
-        templateEngine.addTemplateResolver(resolver);
+        templateEngine.setTemplateResolver(resolver);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        Context context = new Context();
         request.getLocale();
         //response.setHeader("Refresh", "1");
-
+        Context context = new Context();
         String timeZoneParam = request.getParameter("timezone");
         ZoneId zoneId;
-
 
         if (timeZoneParam == null || timeZoneParam.isEmpty()) {
             zoneId = parseTimeZone(getLastTimezoneFromCookie(request)).orElse(ZoneId.systemDefault());
