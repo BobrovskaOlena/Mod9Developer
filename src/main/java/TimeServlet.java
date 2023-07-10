@@ -29,7 +29,7 @@ public class TimeServlet extends HttpServlet {
     public void init() throws ServletException {
         super.init();
         FileTemplateResolver resolver = new FileTemplateResolver();
-        resolver.setPrefix("bin/templates/");
+        resolver.setPrefix("templates/");
         resolver.setSuffix(".html");
         resolver.setTemplateMode("HTML5");
         resolver.setCharacterEncoding("UTF-8");

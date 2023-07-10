@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="01821be4-af23-4394-99e8-818256b4906b" name="Changes" comment="11">
+    <list default="true" id="01821be4-af23-4394-99e8-818256b4906b" name="Changes" comment="12">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/TimeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TimeServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/time_template.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/time_template.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,12 +142,18 @@
       <option name="project" value="LOCAL" />
       <updated>1688928604058</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="12">
+      <created>1689010426646</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1689010426646</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1" />
-    <MESSAGE value="12" />
     <MESSAGE value="123" />
     <MESSAGE value="1234" />
     <MESSAGE value="5" />
@@ -159,6 +163,7 @@
     <MESSAGE value="9" />
     <MESSAGE value="10" />
     <MESSAGE value="11" />
-    <option name="LAST_COMMIT_MESSAGE" value="11" />
+    <MESSAGE value="12" />
+    <option name="LAST_COMMIT_MESSAGE" value="12" />
   </component>
 </project>
