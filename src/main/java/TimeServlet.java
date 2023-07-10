@@ -5,14 +5,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
-import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 import org.thymeleaf.templateresolver.FileTemplateResolver;
-import org.thymeleaf.templateresolver.WebApplicationTemplateResolver;
 import jakarta.servlet.annotation.WebServlet;
-import org.thymeleaf.web.IWebApplication;
-
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.ZoneId;
