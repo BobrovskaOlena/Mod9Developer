@@ -11,6 +11,8 @@ import org.thymeleaf.templateresolver.WebApplicationTemplateResolver;
 import jakarta.servlet.annotation.WebServlet;
 import org.thymeleaf.web.IWebApplication;
 
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.ZoneId;
@@ -26,10 +28,8 @@ public class TimeServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
-        //WebApplicationTemplateResolver resolver = new WebApplicationTemplateResolver((IWebApplication) getServletContext());
         FileTemplateResolver resolver = new FileTemplateResolver();
-        //ClassLoaderTemplateResolver resolver = new ClassLoaderTemplateResolver();
-        resolver.setPrefix("C:/Users/HP/Documents/GitHub/Mod9Developer/src/main/webapp/WEB-INF/templates/");
+        resolver.setPrefix("bin/templates/");
         resolver.setSuffix(".html");
         resolver.setTemplateMode("HTML5");
         resolver.setCharacterEncoding("UTF-8");
@@ -41,7 +41,7 @@ public class TimeServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         request.getLocale();
-        //response.setHeader("Refresh", "1");
+        response.setHeader("Refresh", "1");
         Context context = new Context();
         String timeZoneParam = request.getParameter("timezone");
         ZoneId zoneId;
@@ -49,7 +49,7 @@ public class TimeServlet extends HttpServlet {
         if (timeZoneParam == null || timeZoneParam.isEmpty()) {
             zoneId = parseTimeZone(getLastTimezoneFromCookie(request)).orElse(ZoneId.systemDefault());
         } else {
-            zoneId = parseTimeZone(timeZoneParam).orElse(ZoneId.of("UTC"));
+            zoneId = parseTimeZone(timeZoneParam).orElse(ZoneId.systemDefault());
         }
 
         Cookie cookie = new Cookie("lastTimezone", zoneId.toString());
@@ -65,6 +65,7 @@ public class TimeServlet extends HttpServlet {
         context.setVariable("currentZone", zoneId.toString());
 
         String output = templateEngine.process("time_template", context);
+
         out.write(output);
         out.close();
     }

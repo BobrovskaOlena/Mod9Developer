@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="01821be4-af23-4394-99e8-818256b4906b" name="Changes" comment="10">
+    <list default="true" id="01821be4-af23-4394-99e8-818256b4906b" name="Changes" comment="11">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/TimeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TimeServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/templates/time_template.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/time_template.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,10 +49,10 @@
       <recent name="C:\Users\HP\Documents\GitHub\Mod9Developer\src\main\webapp\WEB-INF\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\HP\Documents\GitHub\Mod9Developer" />
       <recent name="C:\Users\HP\Documents\GitHub\Mod9Developer\src\main\webapp\WEB-INF" />
       <recent name="C:\Users\HP\Documents\GitHub\Mod9Developer\templates" />
       <recent name="C:\Users\HP\Documents\GitHub\Mod9Developer\src\main\webapp" />
-      <recent name="C:\Users\HP\Documents\GitHub\Mod9Developer" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="" />
@@ -137,7 +137,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688918579731</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="11">
+      <created>1688928604058</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1688928604058</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -151,6 +158,7 @@
     <MESSAGE value="8" />
     <MESSAGE value="9" />
     <MESSAGE value="10" />
-    <option name="LAST_COMMIT_MESSAGE" value="10" />
+    <MESSAGE value="11" />
+    <option name="LAST_COMMIT_MESSAGE" value="11" />
   </component>
 </project>
